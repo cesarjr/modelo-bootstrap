@@ -58,5 +58,10 @@ module ModeloBootstrap
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Faz com que a asset pipeline encontre os arquivos adicionados em vendor tendo uma sub-pasta
+    # para cada lib, permitindo assim que as imagens, css e js daquela lib fiquem centralizadas
+    # para facilitar futuras atualizações.
+    config.assets.paths += Dir["#{Rails.root}/vendor/asset-libs/**/"].sort_by { |dir| -dir.size }
   end
 end
